@@ -9,6 +9,8 @@ I decided to do some research on this and present key figures which I found on I
 ![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes1.PNG) 
 ![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes2.PNG)
 ![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes3.PNG)
+![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes4.PNG)
+
 
 
 To answer to those questions we should explain what diabetes is. The situation when the **pancreas** is no longer able to make **insulin** leads to **chronic disease which is called diabetes**. 
