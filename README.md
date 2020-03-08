@@ -6,10 +6,8 @@
 
 I decided to do some research on this and present key figures which I found on International Diabetes Federation site:
 
-![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes1.PNG) 
-![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes2.PNG)
-![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes3.PNG)
-![alt text](https://github.com/zuz201/Diabetes/blob/master/diabetes4.PNG)
+![alt text](https://github.com/zuz201/Diabetes/blob/master/d1.PNG) 
+
 
 
 
