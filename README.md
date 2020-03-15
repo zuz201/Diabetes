@@ -35,3 +35,5 @@ To answer the last question and calculate  the probability that I can suffer fro
 
 
 **The goal of the project** is to choose the ML model with the best accuracy in predicting diabetes disease and use it in user application which help people decide if they are in risk group.
+
+It is Machine Learning classification problem with two clasess: diabetes and non-diabetes. To summarize the performance of a classification algorithm I will be using accuracy, confusion matrix, recall, precision, F-measure.
