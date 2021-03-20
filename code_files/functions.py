@@ -8,13 +8,6 @@ from sklearn.metrics import confusion_matrix, average_precision_score, precision
     accuracy_score, f1_score
     
 
-def plot_outliers(data):
-    
-    columns = data.columns
-
-    for col in columns[:-1]:
-        plt.figure()
-        sns.boxplot(x = data[col])
 
 
 def model_evaluation(y_test, y_pred):
