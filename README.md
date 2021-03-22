@@ -52,7 +52,7 @@ The most important step in Machine Learning is to explore dataset in order to ge
 In this project Python and data science related packages such as _pandas_, _numpy_, _seaborn_, _matplotlib_ were used.<br>
 
 As was noticed using _info()_ function there are 768 entries without missing values, but more detail information was obtained as a result of _describe()_ function.<br>
-![Info](notebooks/info.PNG)
+
 ![Desc](notebooks/describe.PNG)
 
 Despite the fact that there are no missing values, the above statistics indicate potential errors. As was presented above majority of data have minimum value equal to 0. In some cases this situation might be realistic for example number of pregnancies, but features like _Blood Pressure_ or _Skin Thickness_  cannot be equal to 0.
