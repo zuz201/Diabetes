@@ -1,12 +1,17 @@
 # Diabetes
+What is the probability that I can suffer from diabetes? The goal of the project is to create application which help women decide if they are in risk group.The Machine Learning model with the best accuracy in predicting diabetes disease was chosen and used.
 
+## Table of contents
+1. Introduction
+2. Data Preprocessing 
 
+## 1. Introduction
 
 **International Diabetes Federation** refers that **463 million** people living with diabetes. There are couple of questions coming up to my mind. First of all how serious is this disease? What symptoms should pay my attention? Finally, the most important question -  what is the probability that I can suffer from diabetes? 
 
 I decided to do some research on this and present key figures which I found on International Diabetes Federation site:
 
-![alt text](https://github.com/zuz201/Diabetes/blob/master/d1.PNG) 
+![Diabets facts & figures](https://github.com/zuz201/Diabetes/blob/master/d1.PNG) 
 
 
 
@@ -22,18 +27,6 @@ There are three types of diabetes:
 - **Gestational diabetes (GDM)** - consists of high blood glucose during pregnancy and is associated with complications to both mother and child.
 
 
-Some of the signs and symptoms of type 1 and type 2 diabetes are:
-- Increased thirst.
-- Frequent urination.
-- Extreme hunger.
-- Unexplained weight loss.
-- Presence of ketones in the urine (ketones are a byproduct of the breakdown of muscle and fat that happens when there's not enough      available insulin)
-- Fatigue.
-- Irritability.
+To answer the last question and calculate  the probability that I can suffer from diabetes, I decided to use Machine Learning to help me predict Diabetes. It is the Machine Learning classification problem with two clasess: diabetes and non-diabetes. To summarize the performance of a classification algorithm I will be using accuracy, confusion matrix, recall, precision, F-measure.
 
-To answer the last question and calculate  the probability that I can suffer from diabetes, I decided to use Machine Learning to help me predict Diabetes. 
-
-
-**The goal of the project** is to choose the ML model with the best accuracy in predicting diabetes disease and use it in user application which help people decide if they are in risk group.
-
-It is Machine Learning classification problem with two clasess: diabetes and non-diabetes. To summarize the performance of a classification algorithm I will be using accuracy, confusion matrix, recall, precision, F-measure.
+## 2. Data Preprocessing
