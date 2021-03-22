@@ -12,15 +12,16 @@
 # The necessary libraries were imported: **numpy**, **pandas** and **seaborn**. <br>
 # 
 
-# In[59]:
+# In[40]:
 
 
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 
-# In[60]:
+# In[41]:
 
 
 import sys
@@ -30,7 +31,7 @@ sys.path.append('../')
 # **MissForest** is the class imported from **missingpy** library to impute missing values using Random Forests.<br>
 # More information about this library can be accessed with this link [https://github.com/epsilon-machine/missingpy](https://github.com/epsilon-machine/missingpy).
 
-# In[61]:
+# In[42]:
 
 
 from missingpy import MissForest
@@ -38,7 +39,7 @@ from missingpy import MissForest
 
 # Data (_'diabets.txt'_ file ) provided by the UCI Machine Learning Repository was imported using **read_csv** pandas method.
 
-# In[63]:
+# In[43]:
 
 
 dataset = pd.read_csv('../code_files/data/diabetes.txt')
@@ -47,13 +48,13 @@ dataset = pd.read_csv('../code_files/data/diabetes.txt')
 # Dataset consists of 8 independent variables and one target value named <font color = 'green'> __Outcome__ <font color = 'black'>. There are 768 entries without any blanks.<br>
 # Majority of columns have integer datatype. Two variables: __BMI__ and __DiabetesPedigreeFunction__ have float datatype.
 
-# In[64]:
+# In[44]:
 
 
 dataset.info()
 
 
-# In[65]:
+# In[45]:
 
 
 dataset.shape
@@ -71,13 +72,13 @@ dataset.shape
 # * **Age** - age (years) <br><br>
 # * **Outcome** - class variable (0 or 1) <br><br>
 
-# In[67]:
+# In[46]:
 
 
 dataset.head(10)
 
 
-# In[68]:
+# In[47]:
 
 
 dataset.describe()
@@ -87,13 +88,13 @@ dataset.describe()
 # ### Missing data
 # Checking results of  **isnull()**  function it seems that dataset has no _null_ values. As it can be noticed there are some _zero_ values in dataset. In case of some features this value can be realistic (e.g. _Pregnancies_), but it can be an error in dataset or result of replacing _'NaN'_ values.
 
-# In[66]:
+# In[48]:
 
 
 dataset.isnull().sum()
 
 
-# In[69]:
+# In[49]:
 
 
 col = dataset.columns[:-1]
@@ -101,7 +102,7 @@ col = dataset.columns[:-1]
 
 # To examine how many of _zero_ values are available in raw data the below sums are displayed.
 
-# In[70]:
+# In[50]:
 
 
 (dataset[col] == 0).sum()
@@ -113,20 +114,21 @@ col = dataset.columns[:-1]
 # * It is rather impossible to have _BMI_ close to zero. There are 11 values which should be treated as mistake. <br><br> 
 # * As it was presented above there are 5 _zero_ values in _Glucose_ column, but plasma glucose levels whould not be as low as zero.<br> 
 # 
-# There are some methods to deal with missing values. They can be removed as enire row but  we can loose valuable information. The second way is to input average/mean values instead of missing values. In some cases it can be helpful but it can send a wrong signal to the model. Features with missing values can also be removed from the model but it is not the best idea and it might have negative impact to the model. <br><br>
+# There are some methods to deal with missing values. They can be removed as enire row but  we can loose valuable information. The second way is to input average/mean values instead of missing values. In some cases it can be helpful but it can send a wrong signal to the model. Features with missing values can also be removed from the model but it is not the best idea and it might have negative impact on the model. <br><br>
 # 
 # It seems that the best solution in this case is to use some built-in methods to deal with missing values. There are some models which can be used but they require 'NaN' values. It is necessary to replace _zero_ values in *"Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"* columns.
 
-# In[71]:
+# In[51]:
 
 
+dataset_orginal = dataset.copy()
 columns_to_fill = ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]
 for c in columns_to_fill:
    dataset[c].replace(0.0, np.nan ,inplace=True)
 dataset.head()
 
 
-# In[72]:
+# In[52]:
 
 
 dataset.isnull().sum()
@@ -138,7 +140,7 @@ dataset.isnull().sum()
 # 
 # For this dataset __MissForest__ method was used.
 
-# In[73]:
+# In[53]:
 
 
 imputer = MissForest()
@@ -146,7 +148,7 @@ dataset_to_convert = dataset.to_numpy()
 dataset_without_nan = imputer.fit_transform(dataset_to_convert)
 
 
-# In[140]:
+# In[54]:
 
 
 df = pd.DataFrame(dataset_without_nan, columns = dataset.columns)
@@ -154,13 +156,13 @@ df = pd.DataFrame(dataset_without_nan, columns = dataset.columns)
 
 # Dataset without missing values was saved as _df_.
 
-# In[75]:
+# In[55]:
 
 
 df.head()
 
 
-# In[76]:
+# In[56]:
 
 
 df.isnull().sum()
@@ -169,14 +171,14 @@ df.isnull().sum()
 # ### Feature distribution
 # Data distribution of features was presented below. There are two sets of histogram charts for orginal data and charts created based on newly created _df_ dataset.
 
-# In[129]:
+# In[57]:
 
 
-dataset.hist(figsize=(9,9));
+dataset_orginal.hist(figsize=(9,9));
 plt.savefig("Histograms_orginal.jpg")
 
 
-# In[130]:
+# In[58]:
 
 
 df.hist(figsize=(9,9), color = 'green');
@@ -188,7 +190,7 @@ plt.savefig("Histograms_updated.jpg")
 # Analyzing histograms it can be noticed that there are some outliers for some features. The better way to see outliers is to prepare _boxplot_ for each feature.<br>
 # It seems that there is no outlier for _Glucose_. The rest of features have outliers.
 
-# In[131]:
+# In[59]:
 
 
 plt.figure(figsize = (16,5))
@@ -196,7 +198,7 @@ sns.boxplot(data = df.iloc[:,[1,2,3,5,7]], orient = "h");
 plt.savefig("Boxplot1.jpg")
 
 
-# In[132]:
+# In[74]:
 
 
 plt.figure(figsize = (16,4))
@@ -208,7 +210,6 @@ sns.boxplot(x = df["DiabetesPedigreeFunction"], orient = "h");
 plt.figure(figsize = (16,4))
 plt.subplot(313)
 sns.boxplot(x = df["Insulin"], orient = "h");
-plt.savefig("Boxplot2.jpg")
 
 
 # ### Data exploration
@@ -218,24 +219,22 @@ plt.savefig("Boxplot2.jpg")
 # 
 # 
 
-# In[136]:
+# In[76]:
 
 
 corrMatrix = dataset.corr()
 plt.figure(figsize = (16,5))
 sns.heatmap(corrMatrix, annot=True);
 plt.show()
-plt.savefig("Heatmap_orginal.jpg")
 
 
-# In[134]:
+# In[77]:
 
 
 corrMatrix2 = df.corr()
 plt.figure(figsize = (16,5))
 sns.heatmap(corrMatrix2, annot=True);
 plt.show()
-plt.savefig("Heatmap_updated.jpg")
 
 
 # To see how many cases in dataset was marked as _'Diabetes'_ countplot() method from seaborn library was used.
@@ -246,7 +245,7 @@ plt.savefig("Heatmap_updated.jpg")
 df.groupby('Outcome').size()
 
 
-# In[135]:
+# In[78]:
 
 
 sns.countplot((df["Outcome"]));
@@ -255,7 +254,7 @@ plt.savefig("Unbalanced.jpg")
 
 # In this case there are two issues outliers and unbalanced dataset. Highlights how to proceed in such situation can be found in <br>[_Artificial Intelligence in Medicine_ journal.](https://www.sciencedirect.com/science/article/pii/S093336571830681X#bib0040)
 
-# In[139]:
+# In[79]:
 
 
 df.to_csv (r'C:\Users\zuzan\Documents\Diabetes\Diabetes\code_files\data\export_dataframe.csv', index = False, header=True)
