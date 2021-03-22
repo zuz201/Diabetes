@@ -48,10 +48,32 @@ The Diabetes dataset was gathered from National Institiute of Diabetes and Diges
 ### Data Exploration
 
 The most important step in Machine Learning is to explore dataset in order to get to know features and to see if data cleaning or data transformation is needed.
-In this project Python and data science related packages such as _pandas_, _numpy_, _seaborn_, _matplotlib_ were used.
+In this project Python and data science related packages such as _pandas_, _numpy_, _seaborn_, _matplotlib_ were used.<br>
 
-As was noticed using _info()_ function there are 768 entries without missing values, but to see more detail information _describe()_ function was useful.
+As was noticed using _info()_ function there are 768 entries without missing values, but more detail information was obtained as a result of _describe()_ function.<br>
 
-Despite the fact that there are no missing values, the above statistics indicate potential errors. As was presented above majority of data have minimum value equal to 0.0 . In some cases this situation might be realistic for example number of pregnancies, but features like _Blood Pressure_ or _Skin Thickness_ equal cannot be equal to 0.0 .
+Despite the fact that there are no missing values, the above statistics indicate potential errors. As was presented above majority of data have minimum value equal to 0. In some cases this situation might be realistic for example number of pregnancies, but features like _Blood Pressure_ or _Skin Thickness_  cannot be equal to 0.
+
+![Orginal data histogram](notebooks/Histograms_orginal.jpg) 
+
+It is very rarely possible to have 0 insulin, but there is a total of 374 counts so it suggests that they can be treated as incorrectly entered values. Additionally,  plasma glucose levels whould not be as low as zero and it is rather impossible to have BMI close to zero.
 
 ### Data Preparation
+
+There are some methods to deal with missing values. They can be removed as enire row but we can loose valuable information. The second way is to input average/mean values instead of missing values. In some cases it can be helpful but it can send a wrong signal to the model. Features with missing values can also be removed from the model but it is not the best idea and it might have negative impact on the model. It seems that the best solution in this case is to use some built-in methods to deal with missing values. There are some models which can be used but they require 'NaN' values. It is necessary to replace _zero_ values in *"Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"* columns. <br>
+In this project **MissForest** method was used to impute missing values using _Random Forests_ in an iterative fashion. It does not require normalization, but all categorical data should be one-hot-encoded. Features distribution after replacing missing values are presented below.
+
+![Histogram](notebooks/Histograms_updated.jpg) 
+
+Analyzing histograms it can be noticed that there are some outliers and the better way to see outliers is to prepare boxplot for each feature.
+
+![Histogram](notebooks/Boxplot1.jpg) 
+It seems that there is no outlier for _Glucose_. The rest of features have outliers.
+![Histogram](notebooks/Boxplot2.jpg) 
+
+Based on correlation matrix it can be noticed that the most correlated features with _'Outcome'_ variable are _Glucose_, _Insulin_ and _BMI_.
+
+Finally, 'Outcome' variable also was analized to see how many people in dataset are diabetic. <br>
+![Outcome](notebooks/Unbalanced.jpg) 
+<br>To sum up exploration process two main issues were found: outliers and unbalanced dataset.
+
