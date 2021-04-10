@@ -138,3 +138,12 @@ Variable importances indicate how much including a particular variable improves 
 ![Variable Importances](notebooks/images/feature_importances.png)
 
 Random Forest Classifier was saved as prediction model and it was used in web application.
+
+## DIABETES DETECTION APPLICATION
+
+Diabetes detection application was created to help women decide if they are in risk group and they can be suffering from Diabetes. <br>
+
+This application consists of four views : *Home*, *What is Diabetes*, *Test* and *Statistics* which can be choosen from drop-down menu. The most important is *Test* view.
+User can provide information about *Age*, *Weight*, *Height*, *Number of pregnancies*, *plasma glucose concentration*, *Blood Pressure*, *SkinThickness*, *2-Hour serum insulin* and *DiabetesPedigreeFunction* and check if she can be suffering from Diabetes.
+
+
