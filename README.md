@@ -121,7 +121,7 @@ The four performance metrics were used to evaluate and compare different models:
 | SVM           |   0.81   |    0.62   |   0.82  |   0.74   |
 | Naive Bayes   |   0.76   |    0.55   |   0.64  |   0.65   |
 | Decision Tree |   0.80   |    0.62   |   0.86  |   0.74   |
-| Random Forest |   0.81   |    0.63   |   0.87  |   0.75   |
+| Random Forest | **0.81** |  **0.63** | **0.87**| **0.75** |
 
 The best *accuracy* (81 %) was for **SVM model** and **Random Forest Classifier**. *Precision* metric indicate how often it is correct when the model predicts positive (class marked as '1'). <br>
 **Random Forest** has the highest precision equal to 0.63. *Recall* metric represents ratio of true positives to total (actual) positives in the data. In case of Diabetes this metric is crutial because the occurrence of false negatives is unacceptable rather than the occurrence of false positives. The highest recall was calculated for **Random Forest Classifier**. This model was selected as the most accurate to predict diabetes.<br>
