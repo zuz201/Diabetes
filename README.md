@@ -164,3 +164,10 @@ User can provide information about *Age*, *Weight*, *Height*, *Number of pregnan
 On *Statistics* view user can compare her results with the population.
 
 ![Application](notebooks/images/ap5.PNG)
+
+
+
+https://user-images.githubusercontent.com/60897147/114282161-9730aa00-9a42-11eb-88a5-f6f74f3c7fcb.mp4
+
+
+
