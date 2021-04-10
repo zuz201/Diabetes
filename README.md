@@ -4,6 +4,8 @@ What is the probability that I can suffer from diabetes? The goal of the project
 ## Table of contents
 1. Introduction
 2. Data Preprocessing 
+3. Data modeling and validation.
+4. Diabetes detection application.
 
 ## 1. Introduction
 
@@ -139,7 +141,7 @@ Variable importances indicate how much including a particular variable improves 
 
 Random Forest Classifier was saved as prediction model and it was used in web application.
 
-## DIABETES DETECTION APPLICATION
+## 4. DIABETES DETECTION APPLICATION
 
 Diabetes detection application was created to help women decide if they are in risk group and they can be suffering from Diabetes. <br>
 
